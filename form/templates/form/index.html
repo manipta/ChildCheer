@@ -1,0 +1,71 @@
+{% extends 'childrencheer/base.html' %}
+{% load static %}
+{% block body%}
+<div style="
+background-color:#C3E2C2;
+opacity:0.95;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+ min-width:500px;
+border-radius:10px;
+box-shadow:15px 15px 15px black">
+<div style="background-color:#5C8374;width:100%;padding:0;border-radius:10px;text-align:center">
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.tags %} 
+    <p class="{{ message.tags }}" style="color:white;">{{ message }}</p>
+    {% endif %}
+    {% endfor %}
+
+{% endif %}
+    <h2 style="color:white; font-weight:bold;">JOINING FORM</h2>
+</div>
+<form action="" method="POST"
+style="display: flex;
+flex-direction:column;
+justify-content: center;
+align-items: center;
+padding:20px;
+font-size:2rem;
+"
+>
+{% csrf_token %} 
+    <label for="name">Name</label>
+    <input type="text" name="name" style="text-align: center; border-radius:5px;border: solid #5C8374;margin-bottom:15px;">
+    <label for="prof">Profession</label>
+    <input type="text" name="prof" style="text-align: center;border-radius:5px;border: solid #5C8374;margin-bottom:15px;">
+    <label for="city">City</label>
+    <input type="text" name="city"style="text-align: center;border-radius:5px;border: solid #5C8374;margin-bottom:15px;">
+    <label for="country">Country</label>
+    <input type="text" name="country" style="text-align: center;border-radius:5px;border: solid #5C8374;margin-bottom:15px;">
+    <label for="contact">Contact</label>
+    <input type="text" name="contact"style="text-align: center;border-radius:5px;border: solid #5C8374;margin-bottom:15px;">
+    <label for="remarks">Remarks</label>
+    <textarea name="remarks" style="text-align: center; width:100%;min-height:30px;border-radius:5px;border: solid #5C8374;margin-bottom:15px;"></textarea>
+    <div style="text-align:center;">
+        <label for="voluntAs">I would like to be:</label>
+        <div style="display: flex; flex-direction:column;align-items:center;gap:5px;">
+            <div>
+                <input type="radio" id="ant" name="voluntAs"  value="ant"  />
+                <label for="ant">an Active Ant
+                <img src={% static "/img/ant.jpg" %} width=30px; alt=""/></label>
+            </div>
+            <div>
+                <input type="radio" id="bird" name="voluntAs"  value="bird" />
+                <label for="bird">a Speedy Sparrow
+                <img src={% static "/img/bird.jpg" %} width=30px; alt=""/></label>
+            </div>
+            <div>
+                <input type="radio" id="ele" name="voluntAs"  value="ele" checked />
+                <label for="ele">an Electric Elephant
+                <img src={% static "/img/ele.jpg" %} width=40px; alt=""/></label>
+            </div>
+        </div>
+    </div>
+    <button style="background-color:#5C8374;border-radius:5px;padding:2px;margin-top:5px;width:50%;color:white;" action="">Submit</button>
+</form>
+</div>
+<a href={% url 'response' %}><button style="background-color:#5C8374;border-radius:10px;padding:5px;color:white;font-size:3rem;position:fixed;left:75%;top:50%;">Volunteers List</button></a>
+{% endblock %}

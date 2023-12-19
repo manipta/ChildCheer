@@ -1,0 +1,70 @@
+{% extends 'childrencheer/base.html' %}
+{% load static %}
+{% block body%}
+<style>
+    .result{
+        background-color:#5C8374;
+        table-layout:fixed;
+        padding:20px;
+        border-radius:10px;
+        text-align:center;
+        justify-content:center;
+    }
+    .page-lvl-div{
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        font-size:2.5rem;
+        gap:20px;
+        align-items:center;
+    }
+    th{
+        background-color:#EAECCC;
+    }
+    th,td {
+        box-shadow: 5px 0px 10px 2px black;
+        border-radius: 10px;
+        padding:15px;
+        overflow:auto;
+        text-align: center;
+        }
+</style>
+<div class="page-lvl-div">
+<a href={% url 'form' %}><button style="background-color:#5C8374;border-radius:5px;padding:5px;margin-top:5px;color:white;">Join The Chain</button></a>
+<table class="result">
+    <thead>
+        <tr>
+            <th >Sr No.</th>
+            <th >Name</th>
+            <th >Profession</th>
+            <th >City</th>
+            <th >Country</th>
+            <th >Remarks</th>
+        </tr>
+    </thead>
+    <tbody >
+        {% comment %} {% with c=0 %} {% endcomment %}
+        {% comment %} <h1>{{data}}</h1> {% endcomment %}
+        {%for i in data%}
+        <tr>
+        {% comment %} {% with c=c+1 %} {% endcomment %}
+        
+        <td ><p>{{forloop.counter}}</p></td>
+        <td >{{i.name}}</td>
+        <td >{{i.profession}}</td>
+        <td >{{i.city}}</td>
+        <td >{{i.country}}</td>
+        <td >
+            {{i.remarks}}
+        </td>
+        </tr>
+        {% empty %}
+        <td colspan=6>No Data Available.
+        </td>
+            {% endfor %}
+        {% comment %} {% endwith %} {% endcomment %}
+        {% comment %} {% endwith %} {% endcomment %}
+    </tbody>
+    </table>
+</div>
+{% endblock%}
