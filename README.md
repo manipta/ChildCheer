@@ -29,8 +29,7 @@ I am also handling errors.It may include for invalid contact number or already e
   py manage.py runserver
   ```
 - Admin Dashboard: append '/admin' (without quotes) at the end of url for e.g. http://127.0.0.1:8000/admin
-- Username: admin
-- Password: 1
+- You Have to create superuser using `py manage.py createsuperuser`
 
 # Demo Video
 
